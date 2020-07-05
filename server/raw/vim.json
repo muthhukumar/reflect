@@ -1,0 +1,56 @@
+{
+  "prev file": {
+    "action": "jumps to previous file",
+    "key-binding": " ctrl + ^ ",
+    "search": ["^", "previous file", "basic", "default", "movement"],
+    "command": "none"
+  },
+  "fuzy search": {
+    "action": "search thourgh file and directories.",
+    "key-binding": "leader( ) f",
+    "command": "fzf",
+    "search": ["fzf", "f", "search", "custom"]
+  },
+  "coc reference": {
+    "action": "show all the refernce of the selected text",
+    "key-binding": "gr",
+    "search": ["g", "r", "reference", "coc", "custom", "movement"],
+    "command": "none"
+  },
+  "coc definition": {
+    "action": "go to the definition of the selected text",
+    "key-binding": "gd",
+    "search": ["coc", "g", "d", "definition", "custom", "movement"],
+    "command": "none"
+  },
+  "move by given word": {
+    "action": "find the given word the cursor in and iterate through all the posibilites",
+    "key-binding": "ctrl *",
+    "search": ["default", "*", "movement", "word", "movement"],
+    "command": "none"
+  },
+  "search git file": {
+    "action": "search file inside a git repository locally. It list all the files in the given repository",
+    "key-binding": "ctrl p",
+    "command": "GFiles",
+    "search": ["fzf", "custom", "p", "git", "gfiles", "search", "movement"]
+  },
+  "move by line": {
+    "action": "Move cursor by line and put the cursor at the end of the line",
+    "key-binding": "[number][g][_] [ 10g_ ]",
+    "command": "",
+    "search": ["default", "movement", "g", "_", "cursor", "end"]
+  },
+  "encrypt": {
+    "action": "perform a raw 13 a text",
+    "key-binding": "g??",
+    "command": "",
+    "search": ["g", "encrypt", "raw", "text", "?"]
+  },
+  "hightlight": {
+    "action": "go to the last hightlighted text",
+    "key-binding": "gv",
+    "command": "",
+    "search": ["g", "v", "hightlight", "default", "movement"]
+  }
+}
