@@ -1,0 +1,4 @@
+import OakRequestResponse from "./oak.ts";
+export default class AttainRequestResponse extends OakRequestResponse {
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXR0YWluLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiYXR0YWluLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sa0JBQWtCLE1BQU0sVUFBVSxDQUFDO0FBQzFDLE1BQU0sQ0FBQyxPQUFPLE9BQU8scUJBQXNCLFNBQVEsa0JBQWtCO0NBQUcifQ==

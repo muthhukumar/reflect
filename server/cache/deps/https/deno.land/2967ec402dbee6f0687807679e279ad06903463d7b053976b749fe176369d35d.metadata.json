@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "cf-cache-status": "DYNAMIC",
+    "x-content-type-options": "nosniff",
+    "expires": "Sun, 05 Jul 2020 06:47:53 GMT",
+    "etag": "W/\"04003c5c577c3813ce8c2997ab124de62f0a2cf2b324010c4f68de2f05f6ca71\"",
+    "content-type": "application/typescript; charset=utf-8",
+    "vary": "Authorization,Accept-Encoding, Accept-Encoding",
+    "x-fastly-request-id": "82f9592f9786d624ae7abda2790f99fbdb3cb876",
+    "x-xss-protection": "1; mode=block",
+    "access-control-allow-origin": "*",
+    "cache-control": "max-age=300",
+    "strict-transport-security": "max-age=31536000",
+    "cf-request-id": "03bf4fb2d20000e33af6811200000001",
+    "via": "1.1 varnish (Varnish/6.0), 1.1 varnish",
+    "expect-ct": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+    "x-cache": "MISS, MISS",
+    "x-cache-hits": "0, 0",
+    "content-security-policy": "default-src 'none'; style-src 'unsafe-inline'; sandbox",
+    "x-frame-options": "deny",
+    "server": "cloudflare",
+    "set-cookie": "__cfduid=d63582e7dd2db473c29a279cde3a628c21593931373; expires=Tue, 04-Aug-20 06:42:53 GMT; path=/; domain=.deno.land; HttpOnly; SameSite=Lax; Secure",
+    "date": "Sun, 05 Jul 2020 06:42:53 GMT",
+    "cf-ray": "5adf1bcaee34e33a-CCU",
+    "source-age": "0",
+    "x-github-request-id": "BF52:5315:49DAAD:4EF67A:5F016411",
+    "x-timer": "S1593931373.279803,VS0,VE288",
+    "x-served-by": "cache-del21749-DEL"
+  },
+  "url": "https://deno.land/x/snelm/deps/csp/lib/bowser/index.d.ts"
+}

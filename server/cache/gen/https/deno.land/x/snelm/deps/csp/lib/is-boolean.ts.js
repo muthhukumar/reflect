@@ -1,0 +1,4 @@
+export default function isBoolean(value) {
+    return Object.prototype.toString.call(value) === '[object Boolean]';
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaXMtYm9vbGVhbi5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImlzLWJvb2xlYW4udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsTUFBTSxDQUFDLE9BQU8sVUFBVSxTQUFTLENBQUUsS0FBZTtJQUNoRCxPQUFPLE1BQU0sQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFDLElBQUksQ0FBQyxLQUFLLENBQUMsS0FBSyxrQkFBa0IsQ0FBQztBQUN0RSxDQUFDIn0=

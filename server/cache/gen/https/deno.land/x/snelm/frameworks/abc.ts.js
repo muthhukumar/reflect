@@ -1,0 +1,4 @@
+import OakRequestResponse from "./oak.ts";
+export default class AbcRequestResponse extends OakRequestResponse {
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYWJjLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiYWJjLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sa0JBQWtCLE1BQU0sVUFBVSxDQUFDO0FBQzFDLE1BQU0sQ0FBQyxPQUFPLE9BQU8sa0JBQW1CLFNBQVEsa0JBQWtCO0NBQUcifQ==

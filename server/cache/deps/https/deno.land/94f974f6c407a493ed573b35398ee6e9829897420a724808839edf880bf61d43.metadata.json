@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "cache-control": "max-age=300",
+    "access-control-allow-origin": "*",
+    "etag": "W/\"9c3bf778120e1a8616a6acd1819042b528ff6f4addab20d824d1264acdc09437\"",
+    "cf-request-id": "03bf4f9f5e0000e33af69fb200000001",
+    "cf-cache-status": "DYNAMIC",
+    "set-cookie": "__cfduid=df71ce83a40c671430023788fb3cc50051593931368; expires=Tue, 04-Aug-20 06:42:48 GMT; path=/; domain=.deno.land; HttpOnly; SameSite=Lax; Secure",
+    "expires": "Sun, 05 Jul 2020 06:47:49 GMT",
+    "content-security-policy": "default-src 'none'; style-src 'unsafe-inline'; sandbox",
+    "x-cache": "MISS, MISS",
+    "x-cache-hits": "0, 0",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "deny",
+    "expect-ct": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+    "cf-ray": "5adf1babca5ce33a-CCU",
+    "x-github-request-id": "4A6C:1BA2:11BE14:13EBE3:5F016401",
+    "x-timer": "S1593931369.805048,VS0,VE273",
+    "server": "cloudflare",
+    "x-fastly-request-id": "b2806351576497d3fb65b1edef9df5084e47b45b",
+    "x-xss-protection": "1; mode=block",
+    "x-served-by": "cache-del21749-DEL",
+    "source-age": "0",
+    "via": "1.1 varnish (Varnish/6.0), 1.1 varnish",
+    "strict-transport-security": "max-age=31536000",
+    "content-type": "application/typescript; charset=utf-8",
+    "vary": "Authorization,Accept-Encoding, Accept-Encoding",
+    "date": "Sun, 05 Jul 2020 06:42:49 GMT"
+  },
+  "url": "https://deno.land/x/snelm/frameworks/alosaur.ts"
+}

@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "via": "1.1 varnish (Varnish/6.0), 1.1 varnish",
+    "x-github-request-id": "6D28:1BA3:4AFDF7:502C01:5F017668",
+    "x-cache-hits": "0, 0",
+    "cf-request-id": "03bf4fa7ad0000e33af6ad6200000001",
+    "access-control-allow-origin": "*",
+    "x-frame-options": "deny",
+    "x-cache": "MISS, MISS",
+    "etag": "W/\"ee85e531ef627e265c027a5417c08278ca0c0319cfc003a830413c58c3d9e176\"",
+    "cache-control": "max-age=300",
+    "strict-transport-security": "max-age=31536000",
+    "cf-cache-status": "DYNAMIC",
+    "source-age": "0",
+    "expires": "Sun, 05 Jul 2020 06:47:50 GMT",
+    "x-timer": "S1593931370.441641,VS0,VE295",
+    "server": "cloudflare",
+    "expect-ct": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+    "date": "Sun, 05 Jul 2020 06:42:50 GMT",
+    "x-served-by": "cache-del21746-DEL",
+    "cf-ray": "5adf1bb91e0ae33a-CCU",
+    "x-xss-protection": "1; mode=block",
+    "content-type": "application/typescript; charset=utf-8",
+    "set-cookie": "__cfduid=d14fe7376b0d6729b5a10172d2d5c87e61593931370; expires=Tue, 04-Aug-20 06:42:50 GMT; path=/; domain=.deno.land; HttpOnly; SameSite=Lax; Secure",
+    "vary": "Authorization,Accept-Encoding, Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-fastly-request-id": "6ba4cf81d69a34cb872d2ec9411349a84140cab9",
+    "content-security-policy": "default-src 'none'; style-src 'unsafe-inline'; sandbox"
+  },
+  "url": "https://deno.land/x/snelm/frameworks/interface.ts"
+}

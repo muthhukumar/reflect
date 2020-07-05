@@ -1,0 +1,32 @@
+import { Sha1Hash } from "./sha1.ts";
+import { Md5Hash } from "./md5.ts";
+export function hex(bytes) {
+    return Array.prototype.map
+        .call(bytes, (x) => x.toString(16).padStart(2, "0"))
+        .join("");
+}
+const encoder = new TextEncoder();
+export function encode(str) {
+    return encoder.encode(str);
+}
+export class Hash {
+    constructor(algorithm) {
+        this.algorithm = algorithm;
+        const algorithms = {
+            sha1: Sha1Hash,
+            md5: Md5Hash,
+        };
+        this.instance = new algorithms[algorithm]();
+    }
+    digest(bytes) {
+        bytes = this.instance.digest(bytes);
+        return {
+            data: bytes,
+            hex: () => hex(bytes),
+        };
+    }
+    digestString(string) {
+        return this.digest(encode(string));
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaGFzaC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImhhc2gudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUFFLFFBQVEsRUFBRSxNQUFNLFdBQVcsQ0FBQztBQUNyQyxPQUFPLEVBQUUsT0FBTyxFQUFFLE1BQU0sVUFBVSxDQUFDO0FBUW5DLE1BQU0sVUFBVSxHQUFHLENBQUMsS0FBaUI7SUFDbkMsT0FBTyxLQUFLLENBQUMsU0FBUyxDQUFDLEdBQUc7U0FDdkIsSUFBSSxDQUFDLEtBQUssRUFBRSxDQUFDLENBQVMsRUFBRSxFQUFFLENBQUMsQ0FBQyxDQUFDLFFBQVEsQ0FBQyxFQUFFLENBQUMsQ0FBQyxRQUFRLENBQUMsQ0FBQyxFQUFFLEdBQUcsQ0FBQyxDQUFDO1NBQzNELElBQUksQ0FBQyxFQUFFLENBQUMsQ0FBQztBQUNkLENBQUM7QUFFRCxNQUFNLE9BQU8sR0FBRyxJQUFJLFdBQVcsRUFBRSxDQUFDO0FBQ2xDLE1BQU0sVUFBVSxNQUFNLENBQUMsR0FBVztJQUNoQyxPQUFPLE9BQU8sQ0FBQyxNQUFNLENBQUMsR0FBRyxDQUFDLENBQUM7QUFDN0IsQ0FBQztBQUVELE1BQU0sT0FBTyxJQUFJO0lBR2YsWUFBcUIsU0FBd0I7UUFBeEIsY0FBUyxHQUFULFNBQVMsQ0FBZTtRQUMzQyxNQUFNLFVBQVUsR0FBRztZQUNqQixJQUFJLEVBQUUsUUFBUTtZQUNkLEdBQUcsRUFBRSxPQUFPO1NBQ2IsQ0FBQztRQUNGLElBQUksQ0FBQyxRQUFRLEdBQUcsSUFBSSxVQUFVLENBQUMsU0FBUyxDQUFDLEVBQUUsQ0FBQztJQUM5QyxDQUFDO0lBRUQsTUFBTSxDQUNKLEtBQWlCO1FBS2pCLEtBQUssR0FBRyxJQUFJLENBQUMsUUFBUSxDQUFDLE1BQU0sQ0FBQyxLQUFLLENBQUMsQ0FBQztRQUNwQyxPQUFPO1lBQ0wsSUFBSSxFQUFFLEtBQUs7WUFDWCxHQUFHLEVBQUUsR0FBRyxFQUFFLENBQUMsR0FBRyxDQUFDLEtBQUssQ0FBQztTQUN0QixDQUFDO0lBQ0osQ0FBQztJQUVELFlBQVksQ0FBQyxNQUFhO1FBQ3hCLE9BQU8sSUFBSSxDQUFDLE1BQU0sQ0FBQyxNQUFNLENBQUMsTUFBTSxDQUFDLENBQUMsQ0FBQztJQUNyQyxDQUFDO0NBQ0YifQ==

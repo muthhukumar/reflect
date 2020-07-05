@@ -1,0 +1,4 @@
+import OakRequestResponse from "./oak.ts";
+export default class AquaRequestResponse extends OakRequestResponse {
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXF1YS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImFxdWEudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxrQkFBa0IsTUFBTSxVQUFVLENBQUM7QUFDMUMsTUFBTSxDQUFDLE9BQU8sT0FBTyxtQkFBb0IsU0FBUSxrQkFBa0I7Q0FBRyJ9

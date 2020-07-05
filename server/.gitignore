@@ -1,4 +1,3 @@
 .env
 /.deno_plugins
-/cache
 Procfile
