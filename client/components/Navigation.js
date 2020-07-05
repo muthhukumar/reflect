@@ -61,6 +61,7 @@ export default function Navigation() {
             align-items: center;
             justify-content: center;
             position: fixed;
+            background: var(--light);
             top: 0;
             left: 0;
             min-width: 100%;
@@ -85,7 +86,7 @@ export default function Navigation() {
             margin: 0 2rem;
           }
           .highlight {
-            border-bottom: 5px solid #b07156;
+            border-bottom: 3px solid var(--font-color);
           }
           .navigation a {
             letter-spacing: 0.8px;

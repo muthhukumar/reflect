@@ -1,6 +1,7 @@
 import Layout from "../components/Layout";
 
-export default function Notes() {
+export default function Notes(props) {
+  console.log(props);
   return (
     <Layout>
       <main>Notes</main>
@@ -14,3 +15,4 @@ export default function Notes() {
     </Layout>
   );
 }
+
