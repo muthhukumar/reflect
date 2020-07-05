@@ -1,0 +1,32 @@
+{
+  "headers": {
+    "x-xss-protection": "1; mode=block",
+    "expect-ct": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+    "content-type": "application/typescript; charset=utf-8",
+    "x-fastly-request-id": "44d2f2912cbbf57e5ff28036b5f599ca18ccc9f5",
+    "x-github-request-id": "5374:5313:118A39:13B827:5F016219",
+    "cf-ray": "5adec1a9bec5e312-CCU",
+    "cf-cache-status": "DYNAMIC",
+    "x-frame-options": "deny",
+    "vary": "Authorization,Accept-Encoding, Accept-Encoding",
+    "x-cache-hits": "0, 0",
+    "x-content-type-options": "nosniff",
+    "x-served-by": "cache-del21731-DEL",
+    "x-timer": "S1593927682.573426,VS0,VE277",
+    "server": "cloudflare",
+    "access-control-allow-origin": "*",
+    "via": "1.1 varnish (Varnish/6.0), 1.1 varnish",
+    "x-cache": "HFM, MISS",
+    "set-cookie": "__cfduid=d8a8bb427f0694679ac3e1b5a030458e21593927681; expires=Tue, 04-Aug-20 05:41:21 GMT; path=/; domain=.deno.land; HttpOnly; SameSite=Lax; Secure",
+    "date": "Sun, 05 Jul 2020 05:41:22 GMT",
+    "cache-control": "max-age=300",
+    "etag": "W/\"224a8e08dff86e2cef7317bba603f8f2576555399bc96cebe4299e745d9644b3\"",
+    "content-security-policy": "default-src 'none'; style-src 'unsafe-inline'; sandbox",
+    "expires": "Sun, 05 Jul 2020 05:46:21 GMT",
+    "cf-request-id": "03bf175e100000e3127f14b200000001",
+    "source-age": "0",
+    "strict-transport-security": "max-age=31536000",
+    "x-deno-warning": "Implicitly using master branch https://deno.land/std/_util/assert.ts"
+  },
+  "url": "https://deno.land/std/_util/assert.ts"
+}

@@ -1,0 +1,56 @@
+import { exists, Hash, log, path } from "./deps.ts";
+const os = Deno.build.os;
+const md5 = new Hash("md5");
+const PLUGIN_SUFFIX_MAP = {
+    darwin: ".dylib",
+    linux: ".so",
+    windows: ".dll",
+};
+const pluginSuffix = PLUGIN_SUFFIX_MAP[os];
+export async function download(options) {
+    const { name, urls, checkCache = true } = options;
+    const remoteUrl = urls[os];
+    const remoteHash = md5.digestString(remoteUrl + pluginSuffix).hex();
+    const cacheFileName = `${name}_${remoteHash}${pluginSuffix}`;
+    const localPath = path.resolve(".deno_plugins", cacheFileName);
+    await Deno.mkdir(".deno_plugins", { recursive: true });
+    if (!(await exists(localPath)) || !checkCache) {
+        if (!remoteUrl) {
+            throw Error(`"${name}" plugin does not provide binaries suitable for the current system`);
+        }
+        if (remoteUrl.startsWith("file://")) {
+            const fromPath = path.resolve(remoteUrl.slice(7));
+            await copyFromLocal(name, fromPath, localPath);
+        }
+        else {
+            await downloadFromRemote(name, remoteUrl, localPath);
+        }
+    }
+    return localPath;
+}
+export async function prepare(options) {
+    const { name, printLog = true } = options;
+    if (printLog) {
+        await log.setup({});
+    }
+    const localPath = await download(options);
+    log.info(`load deno plugin "${name}" from local "${localPath}"`);
+    return Deno.openPlugin(localPath);
+}
+async function downloadFromRemote(name, remoteUrl, savePath) {
+    log.info(`downloading deno plugin "${name}" from "${remoteUrl}"`);
+    const download = await fetch(remoteUrl);
+    if (download.status !== 200) {
+        throw Error(`downloading plugin "${name}" from "${remoteUrl}" failed.`);
+    }
+    const pluginFileData = await download.arrayBuffer();
+    await Deno.writeFile(savePath, new Uint8Array(pluginFileData));
+}
+async function copyFromLocal(name, from, to) {
+    log.info(`copy deno plugin "${name}" from "${from}"`);
+    if (!(await exists(from))) {
+        throw Error(`copy plugin "${name}" from "${from}" failed, ${from} does not exist.`);
+    }
+    await Deno.copyFile(from, to);
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibW9kLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsibW9kLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sRUFBRSxNQUFNLEVBQUUsSUFBSSxFQUFFLEdBQUcsRUFBRSxJQUFJLEVBQUUsTUFBTSxXQUFXLENBQUM7QUFFcEQsTUFBTSxFQUFFLEdBQUcsSUFBSSxDQUFDLEtBQUssQ0FBQyxFQUFFLENBQUM7QUFDekIsTUFBTSxHQUFHLEdBQUcsSUFBSSxJQUFJLENBQUMsS0FBSyxDQUFDLENBQUM7QUFFNUIsTUFBTSxpQkFBaUIsR0FBNkM7SUFDbEUsTUFBTSxFQUFFLFFBQVE7SUFDaEIsS0FBSyxFQUFFLEtBQUs7SUFDWixPQUFPLEVBQUUsTUFBTTtDQUNoQixDQUFDO0FBRUYsTUFBTSxZQUFZLEdBQUcsaUJBQWlCLENBQUMsRUFBRSxDQUFDLENBQUM7QUFhM0MsTUFBTSxDQUFDLEtBQUssVUFBVSxRQUFRLENBQUMsT0FBdUI7SUFDcEQsTUFBTSxFQUFFLElBQUksRUFBRSxJQUFJLEVBQUUsVUFBVSxHQUFHLElBQUksRUFBRSxHQUFHLE9BQU8sQ0FBQztJQUVsRCxNQUFNLFNBQVMsR0FBRyxJQUFJLENBQUMsRUFBRSxDQUFDLENBQUM7SUFDM0IsTUFBTSxVQUFVLEdBQUcsR0FBRyxDQUFDLFlBQVksQ0FBQyxTQUFTLEdBQUcsWUFBWSxDQUFDLENBQUMsR0FBRyxFQUFFLENBQUM7SUFDcEUsTUFBTSxhQUFhLEdBQUcsR0FBRyxJQUFJLElBQUksVUFBVSxHQUFHLFlBQVksRUFBRSxDQUFDO0lBQzdELE1BQU0sU0FBUyxHQUFHLElBQUksQ0FBQyxPQUFPLENBQUMsZUFBZSxFQUFFLGFBQWEsQ0FBQyxDQUFDO0lBRS9ELE1BQU0sSUFBSSxDQUFDLEtBQUssQ0FBQyxlQUFlLEVBQUUsRUFBRSxTQUFTLEVBQUUsSUFBSSxFQUFFLENBQUMsQ0FBQztJQUV2RCxJQUFJLENBQUMsQ0FBQyxNQUFNLE1BQU0sQ0FBQyxTQUFTLENBQUMsQ0FBQyxJQUFJLENBQUMsVUFBVSxFQUFFO1FBQzdDLElBQUksQ0FBQyxTQUFTLEVBQUU7WUFDZCxNQUFNLEtBQUssQ0FDVCxJQUFJLElBQUksb0VBQW9FLENBQzdFLENBQUM7U0FDSDtRQUVELElBQUksU0FBUyxDQUFDLFVBQVUsQ0FBQyxTQUFTLENBQUMsRUFBRTtZQUNuQyxNQUFNLFFBQVEsR0FBRyxJQUFJLENBQUMsT0FBTyxDQUFDLFNBQVMsQ0FBQyxLQUFLLENBQUMsQ0FBQyxDQUFDLENBQUMsQ0FBQztZQUNsRCxNQUFNLGFBQWEsQ0FBQyxJQUFJLEVBQUUsUUFBUSxFQUFFLFNBQVMsQ0FBQyxDQUFDO1NBQ2hEO2FBQU07WUFDTCxNQUFNLGtCQUFrQixDQUFDLElBQUksRUFBRSxTQUFTLEVBQUUsU0FBUyxDQUFDLENBQUM7U0FDdEQ7S0FDRjtJQUVELE9BQU8sU0FBUyxDQUFDO0FBQ25CLENBQUM7QUFFRCxNQUFNLENBQUMsS0FBSyxVQUFVLE9BQU8sQ0FBQyxPQUF1QjtJQUNuRCxNQUFNLEVBQUUsSUFBSSxFQUFFLFFBQVEsR0FBRyxJQUFJLEVBQUUsR0FBRyxPQUFPLENBQUM7SUFFMUMsSUFBSSxRQUFRLEVBQUU7UUFDWixNQUFNLEdBQUcsQ0FBQyxLQUFLLENBQUMsRUFBRSxDQUFDLENBQUM7S0FDckI7SUFFRCxNQUFNLFNBQVMsR0FBRyxNQUFNLFFBQVEsQ0FBQyxPQUFPLENBQUMsQ0FBQztJQUUxQyxHQUFHLENBQUMsSUFBSSxDQUFDLHFCQUFxQixJQUFJLGlCQUFpQixTQUFTLEdBQUcsQ0FBQyxDQUFDO0lBRWpFLE9BQU8sSUFBSSxDQUFDLFVBQVUsQ0FBQyxTQUFTLENBQUMsQ0FBQztBQUNwQyxDQUFDO0FBRUQsS0FBSyxVQUFVLGtCQUFrQixDQUMvQixJQUFZLEVBQ1osU0FBaUIsRUFDakIsUUFBZ0I7SUFFaEIsR0FBRyxDQUFDLElBQUksQ0FBQyw0QkFBNEIsSUFBSSxXQUFXLFNBQVMsR0FBRyxDQUFDLENBQUM7SUFDbEUsTUFBTSxRQUFRLEdBQUcsTUFBTSxLQUFLLENBQUMsU0FBUyxDQUFDLENBQUM7SUFFeEMsSUFBSSxRQUFRLENBQUMsTUFBTSxLQUFLLEdBQUcsRUFBRTtRQUMzQixNQUFNLEtBQUssQ0FBQyx1QkFBdUIsSUFBSSxXQUFXLFNBQVMsV0FBVyxDQUFDLENBQUM7S0FDekU7SUFFRCxNQUFNLGNBQWMsR0FBRyxNQUFNLFFBQVEsQ0FBQyxXQUFXLEVBQUUsQ0FBQztJQUNwRCxNQUFNLElBQUksQ0FBQyxTQUFTLENBQUMsUUFBUSxFQUFFLElBQUksVUFBVSxDQUFDLGNBQWMsQ0FBQyxDQUFDLENBQUM7QUFDakUsQ0FBQztBQUVELEtBQUssVUFBVSxhQUFhLENBQUMsSUFBWSxFQUFFLElBQVksRUFBRSxFQUFVO0lBQ2pFLEdBQUcsQ0FBQyxJQUFJLENBQUMscUJBQXFCLElBQUksV0FBVyxJQUFJLEdBQUcsQ0FBQyxDQUFDO0lBRXRELElBQUksQ0FBQyxDQUFDLE1BQU0sTUFBTSxDQUFDLElBQUksQ0FBQyxDQUFDLEVBQUU7UUFDekIsTUFBTSxLQUFLLENBQ1QsZ0JBQWdCLElBQUksV0FBVyxJQUFJLGFBQWEsSUFBSSxrQkFBa0IsQ0FDdkUsQ0FBQztLQUNIO0lBRUQsTUFBTSxJQUFJLENBQUMsUUFBUSxDQUFDLElBQUksRUFBRSxFQUFFLENBQUMsQ0FBQztBQUNoQyxDQUFDIn0=

@@ -2,8 +2,8 @@
   "$schema": "https://deno.land/x/denon/schema.json",
   "scripts": {
     "start": {
-      "cmd": "deno run --allow-net --allow-env --allow-read --allow-write --allow-plugin --unstable mod.ts",
-      "desc": "run my app.ts file"
+      "cmd": "deno run --allow-net --allow-env --allow-read --allow-write --allow-plugin --cached-only --unstable mod.ts --port=5000",
+      "desc": "run my mod.ts file"
     }
   }
 }

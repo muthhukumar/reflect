@@ -1,0 +1,4 @@
+export default function isFunction(value) {
+    return value instanceof Function;
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaXMtZnVuY3Rpb24uanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJpcy1mdW5jdGlvbi50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxNQUFNLENBQUMsT0FBTyxVQUFVLFVBQVUsQ0FBRSxLQUFlO0lBQ2pELE9BQU8sS0FBSyxZQUFZLFFBQVEsQ0FBQztBQUNuQyxDQUFDIn0=

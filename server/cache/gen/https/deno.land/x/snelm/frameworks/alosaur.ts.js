@@ -1,0 +1,4 @@
+import OakRequestResponse from "./oak.ts";
+export default class AlosaurRequestResponse extends OakRequestResponse {
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYWxvc2F1ci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImFsb3NhdXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxrQkFBa0IsTUFBTSxVQUFVLENBQUM7QUFDMUMsTUFBTSxDQUFDLE9BQU8sT0FBTyxzQkFBdUIsU0FBUSxrQkFBa0I7Q0FBRyJ9
