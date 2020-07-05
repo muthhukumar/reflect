@@ -1,4 +1,4 @@
 .env
-./.deno_plugins
-cache
+/.deno_plugins
+/cache
 Procfile
