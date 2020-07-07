@@ -1,66 +1,23 @@
-import { useState } from "react";
-
 import ContentIndex from "../components/ContentIndex";
 import Layout from "../components/Layout";
 import Card from "../components/vimComponents/Card";
 
-const url = process.env.NEXT_PUBLIC_API;
-
-const VIM_COMMANDS = [
-  {
-    _id: { $oid: "5f0153c000c073a9009cfe8e" },
-    command: "none",
-    keyBinding: " ctrl + ^ ",
-    action: "jumps to previous file",
-    search: ["^", "previous file", "basic", "default", "movement"],
-    title: "prev file",
-  },
-];
-
-export default function (props) {
-  console.log(props);
+export default function ({ data }) {
   return (
     <Layout>
       <main>
-        <ContentIndex title="Vim Commands" contents={VIM_COMMANDS[0].search} />
+        <ContentIndex title="Vim Commands" data={data} type="vim" />
         <div className="vim-cards">
-          <Card
-            action={VIM_COMMANDS[0].action}
-            command={VIM_COMMANDS[0].command}
-            keyBinding={VIM_COMMANDS[0].keyBinding}
-            title={VIM_COMMANDS[0].title}
-          />
-          <Card
-            action={VIM_COMMANDS[0].action}
-            command={VIM_COMMANDS[0].command}
-            keyBinding={VIM_COMMANDS[0].keyBinding}
-            title={VIM_COMMANDS[0].title}
-          />
-          <Card
-            action={VIM_COMMANDS[0].action}
-            command={VIM_COMMANDS[0].command}
-            keyBinding={VIM_COMMANDS[0].keyBinding}
-            title={VIM_COMMANDS[0].title}
-          />
-          <Card
-            action={VIM_COMMANDS[0].action}
-            command={VIM_COMMANDS[0].command}
-            keyBinding={VIM_COMMANDS[0].keyBinding}
-            title={VIM_COMMANDS[0].title}
-          />
-          <Card
-            action={VIM_COMMANDS[0].action}
-            command={VIM_COMMANDS[0].command}
-            keyBinding={VIM_COMMANDS[0].keyBinding}
-            title={VIM_COMMANDS[0].title}
-          />
-          <Card
-            id="test"
-            action={VIM_COMMANDS[0].action}
-            command={VIM_COMMANDS[0].command}
-            keyBinding={VIM_COMMANDS[0].keyBinding}
-            title={VIM_COMMANDS[0].title}
-          />
+          {data.map((vimCommand) => (
+            <Card
+              id={vimCommand._id.$oid}
+              key={vimCommand._id.$oid}
+              action={vimCommand.action}
+              command={vimCommand.command}
+              keyBinding={vimCommand.keyBinding}
+              title={vimCommand.title}
+            />
+          ))}
         </div>
       </main>
       <style jsx>
@@ -74,7 +31,6 @@ export default function (props) {
           .vim-cards {
             justify-content: center;
             grid-template-columns: repeat(auto-fit, 28.3rem);
-            grid-auto-row: minmax(14rem);
             display: grid;
             grid-area: content;
           }
@@ -85,8 +41,7 @@ export default function (props) {
 }
 
 export async function getServerSideProps() {
-  const response = await fetch(url + "/vim");
-  const data = await response.json();
-  console.log(data);
+  const response = await fetch(process.env.NEXT_PUBLIC_API + "/vim");
+  const { vimCommands: data } = await response.json();
   return { props: { data } };
 }
