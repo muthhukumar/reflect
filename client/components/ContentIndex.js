@@ -1,35 +1,61 @@
-export default function ContentIndex({ type, title, data }) {
+export default function ContentIndex({ type, title, closeMenu, data }) {
   return (
     <div className="container">
-      <h3>{title}</h3>
+      <button className="close" onClick={closeMenu}>
+        x
+      </button>
+      <h3>{data.length !== 0 ? title : "Title"}</h3>
       <ul>
-        {data.map((content) => (
-          <li key={content._id.$oid}>
-            <a className="content-container" href={`#${content._id.$oid}`}>
-              <span>{"</>"} </span>
-              {type === "vim" && <div className="content">{content.title}</div>}
-              {type === "report" && (
-                <div className="content">{content.date}</div>
-              )}
-              {type === "notes" && (
-                <div className="content">{content.title}</div>
-              )}
-            </a>
+        {data.length >= 0 ? (
+          data.map((content) => (
+            <li key={content._id.$oid}>
+              <a className="content-container" href={`#${content._id.$oid}`}>
+                <span>{"</>"} </span>
+                {type === "vim" && (
+                  <div className="content">{content.title}</div>
+                )}
+                {type === "report" && (
+                  <div className="content">{content.date}</div>
+                )}
+                {type === "notes" && (
+                  <div className="content">{content.title}</div>
+                )}
+              </a>
+            </li>
+          ))
+        ) : (
+          <li>
+            <a className="content-container">index not found</a>
           </li>
-        ))}
+        )}
       </ul>
       <style jsx>
         {`
           .container {
-            grid-area: menu;
-            max-width: 23rem;
-            min-width: 19rem;
+            min-width: 14rem;
+            position: fixed;
+            top: 0.8rem;
+            left: 0;
+            z-index: 50;
             box-shadow: 0 0 10px 2px var(--light);
             display: flex;
-            margin: 0.7rem;
             padding: 0.7rem;
             align-items: center;
             flex-direction: column;
+            background: var(--primary);
+            animation: showMenu 0.8s ease-out;
+          }
+          .close {
+            background: var(--font-color);
+            position: absolute;
+            width: 1.2rem;
+            height: 1.2rem;
+            right: 0.4rem;
+            top: 0.4rem;
+            font-size: 0.6rem;
+            color: white;
+            border: none;
+            border-radius: 50%;
           }
           .container h3 {
             background: var(--light);
@@ -68,16 +94,21 @@ export default function ContentIndex({ type, title, data }) {
           .container ul::-webkit-scrollbar {
             display: none;
           }
+          @keyframes showMenu {
+            0% {
+              opacity: 0;
+              transform: translateX(-10rem);
+            }
+            50% {
+              opacity: 0;
+              transform: translateX(-5rem);
+            }
+            100% {
+              transform: translateX(0);
+            }
+          }
         `}
       </style>
     </div>
   );
 }
-/*
-          <a className="content-container" key={content._id.$oid}>
-            <span>{"</>"}</span>
-            {type === "vim" && <li className="content">{content.title}</li>}
-            {type === "report" && <li className="content">{content.date}</li>}
-            {type === "notes" && <li className="content">{content.title}</li>}
-          </a>
-          */

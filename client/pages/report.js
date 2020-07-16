@@ -1,41 +1,39 @@
+import Head from "next/head";
 import Layout from "../components/Layout";
-import ContentIndex from "../components/ContentIndex";
+import Card from "../components/Report/Card";
 
-const reports = [
-  {
-    _id: { $oid: "5f01566500c9cad70004cda9" },
-    notes: [],
-    date: "30.06.2020",
-    done: [
-      " In the morning rectified the problem and reuploaded to the vercel",
-      " ended up not working. because i did not configured the env variables correctly",
-      " The firefox did not show any socket request in the hosted page and shifted to the chrome there is show ",
-      "   the socket url is wrong",
-      " Then updated the env variable and now it working",
-      " planned on make the website mobile first",
-      " removed all the styles and worked from scratch",
-      " home page looks awesome, only the chat page need to be updated",
-    ],
-    quote: [],
-  },
-];
-export default function Report() {
+export default function Report({ reports }) {
   return (
-    <Layout>
+    <Layout title="Reports" data={reports} type="report">
+      <Head>
+        <title>Report</title>
+      </Head>
       <main>
-        <ContentIndex title="Reports" data={reports} type="report" />
+        <div className="report-cards">
+          {reports.map((report) => (
+            <Card
+              id={report._id.$oid}
+              key={report._id.$oid}
+              quote={report.quote}
+              date={report.date}
+              notes={report.notes}
+              done={report.done}
+            />
+          ))}
+        </div>
       </main>
       <style jsx>
         {`
           main {
-            padding-top: 5rem;
+            padding-top: 3.9rem;
             display: grid;
-            grid-template-columns: 20rem 1fr;
-            grid-template-areas: "menu content";
+            grid-template-columns: 1fr;
+            grid-template-areas: "content";
           }
           .report-cards {
+            grid-template-columns: repeat(auto-fill, minmax(28rem, auto));
+            grid-template-rows: repeat(auto-fill, minmax(1rem, auto));
             justify-content: center;
-            grid-template-columns: repeat(auto-fit, 28.3rem);
             display: grid;
             grid-area: content;
           }
@@ -44,13 +42,19 @@ export default function Report() {
     </Layout>
   );
 }
-/*
+
 export async function getServerSideProps() {
-  const response = await fetch(process.env.NEXT_PUBLIC_API + "/report");
-  const { reports } = await response.json();
+  let reports;
+  try {
+    const response = await fetch(process.env.NEXT_PUBLIC_API + "/report");
+    const data = await response.json();
+    reports = data.reports;
+  } catch (err) {
+    reports = [];
+  }
   return {
     props: {
       reports,
     },
   };
-}*/
+}

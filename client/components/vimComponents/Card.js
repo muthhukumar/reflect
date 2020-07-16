@@ -17,18 +17,15 @@ export default function Card({ id, title, keyBinding, action, command }) {
           .container {
             font-family: inherit;
             box-shadow: 0 0 5px 1px var(--light);
-            max-width: 32rem;
             display: flex;
-            min-width: 24rem;
             align-items: center;
             border-radius: 8px;
-            margin: 0.7rem;
-            padding: 0.7rem;
-            height: 14rem;
+            margin: 0.4rem;
+            padding: 0.3rem;
             background: var(--secondary);
           }
           .container:hover {
-            border: 2px solid var(--font-color);
+            box-shadow: 0 0 10px 1px var(--font-color);
             cursor: pointer;
           }
           .title-container {
@@ -46,12 +43,12 @@ export default function Card({ id, title, keyBinding, action, command }) {
             letter-spacing: 3.5px;
             font-size: 1rem;
             color: #ccc;
-            margin: 0.7rem 0;
+            margin: 0.5rem 0;
             font-weight: bold;
           }
           .card-title {
             text-transform: capitalize;
-            margin: 1.7rem 0;
+            margin: 1.4rem 0;
             color: var(--white);
             word-wrap: break-word;
             width: 100%;

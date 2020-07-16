@@ -1,9 +1,21 @@
-import Navigation from "./Navigation";
+import { useState } from "react";
 
-export default function Layout({ children }) {
+import Navigation from "./Navigation";
+import ContentIndex from "../components/ContentIndex";
+
+export default function Layout({ children, title, data, type }) {
+  const [isContentIndexOpen, setIsContentIndexOpen] = useState(false);
   return (
     <div className="container">
-      <Navigation />
+      <Navigation openIndex={() => setIsContentIndexOpen(true)} />
+      {isContentIndexOpen && (
+        <ContentIndex
+          closeMenu={() => setIsContentIndexOpen(false)}
+          title={title}
+          data={data}
+          type={type}
+        />
+      )}
       {children}
       <style jsx>{`
         .container {

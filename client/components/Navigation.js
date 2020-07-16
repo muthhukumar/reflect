@@ -1,10 +1,15 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-export default function Navigation() {
+export default function Navigation({ openIndex }) {
   const router = useRouter();
   return (
     <div className={`navigation`}>
+      <div className="burder-menu" onClick={openIndex}>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
       <div className="title">Reflect</div>
       <ul>
         <li>
@@ -66,9 +71,30 @@ export default function Navigation() {
             left: 0;
             min-width: 100%;
             z-index: 1;
+            box-shadow: 0 0 5px 1px var(--light);
+          }
+          .burder-menu {
+            position: fixed;
+            top: 1.2rem;
+            left: 1.5rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            display: flex;
+            justify-self: flex-start;
+            justify-content: space-between;
+            flex-direction: column;
+            box-shadow: 0 0 5px 1px var(--light);
+          }
+          .burder-menu:hover {
+            cursor: pointer;
+          }
+          .burder-menu div {
+            width: 100%;
+            height: 2px;
+            background: white;
           }
           .navigation ul {
-            margin: 0 2rem;
+            margin: 0 1.5rem;
             display: flex;
             padding: 0;
             align-items: center;
@@ -78,7 +104,7 @@ export default function Navigation() {
           .title {
             margin: 0;
             margin: 0 2rem;
-            font-size: 2.2rem;
+            font-size: 1.5rem;
             letter-spacing: 1px;
             color: var(--white);
           }

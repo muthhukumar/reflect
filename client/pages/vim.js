@@ -1,12 +1,14 @@
-import ContentIndex from "../components/ContentIndex";
+import Head from "next/head";
 import Layout from "../components/Layout";
 import Card from "../components/vimComponents/Card";
 
 export default function ({ data }) {
   return (
-    <Layout>
+    <Layout title="Vim Commands" data={data} type="vim">
+      <Head>
+        <title>Vim commands</title>
+      </Head>
       <main>
-        <ContentIndex title="Vim Commands" data={data} type="vim" />
         <div className="vim-cards">
           {data.map((vimCommand) => (
             <Card
@@ -23,14 +25,14 @@ export default function ({ data }) {
       <style jsx>
         {`
           main {
-            padding-top: 5rem;
+            padding-top: 3.9rem;
             display: grid;
-            grid-template-columns: 20rem 1fr;
-            grid-template-areas: "menu content";
+            grid-template-columns: 1fr;
+            grid-template-areas: "content";
           }
           .vim-cards {
             justify-content: center;
-            grid-template-columns: repeat(auto-fit, 28.3rem);
+            grid-template-columns: repeat(auto-fit, minmax(25.3rem, auto));
             display: grid;
             grid-area: content;
           }
@@ -41,7 +43,14 @@ export default function ({ data }) {
 }
 
 export async function getServerSideProps() {
-  const response = await fetch(process.env.NEXT_PUBLIC_API + "/vim");
-  const { vimCommands: data } = await response.json();
+  let data;
+  try {
+    const response = await fetch(process.env.NEXT_PUBLIC_API + "/vim");
+    const { vimCommands } = await response.json();
+    data = vimCommands;
+    console.log(vimCommands);
+  } catch (err) {
+    data = [];
+  }
   return { props: { data } };
 }
