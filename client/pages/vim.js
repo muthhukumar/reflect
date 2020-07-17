@@ -1,22 +1,34 @@
 import Head from "next/head";
+
 import Layout from "../components/Layout";
 import Card from "../components/vimComponents/Card";
+import { useFilter } from "../lib/Filter-hook";
+import SearchBar from "../components/SearchBar";
 
 export default function ({ data }) {
+  const [onSearchTermChange, searchTerm, filtered, setSearchTerm] = useFilter(
+    data
+  );
   return (
     <Layout title="Vim Commands" data={data} type="vim">
       <Head>
         <title>Vim commands</title>
       </Head>
       <main>
+        <SearchBar
+          onBlur={() => setSearchTerm("")}
+          onSearchTermChange={onSearchTermChange}
+          value={searchTerm}
+        />
         <div className="vim-cards">
-          {data.map((vimCommand) => (
+          {filtered.map((vimCommand) => (
             <Card
               id={vimCommand._id.$oid}
               key={vimCommand._id.$oid}
               action={vimCommand.action}
               command={vimCommand.command}
               keyBinding={vimCommand.keyBinding}
+              search={vimCommand.search}
               title={vimCommand.title}
             />
           ))}
@@ -28,7 +40,9 @@ export default function ({ data }) {
             padding-top: 3.9rem;
             display: grid;
             grid-template-columns: 1fr;
-            grid-template-areas: "content";
+            grid-template-areas:
+              "searchbar"
+              "content";
           }
           .vim-cards {
             justify-content: center;
@@ -41,14 +55,12 @@ export default function ({ data }) {
     </Layout>
   );
 }
-
 export async function getServerSideProps() {
   let data;
   try {
     const response = await fetch(process.env.NEXT_PUBLIC_API + "/vim");
     const { vimCommands } = await response.json();
     data = vimCommands;
-    console.log(vimCommands);
   } catch (err) {
     data = [];
   }

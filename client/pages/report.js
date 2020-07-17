@@ -1,16 +1,27 @@
 import Head from "next/head";
+
 import Layout from "../components/Layout";
 import Card from "../components/Report/Card";
+import { useFilter } from "../lib/Filter-hook";
+import SearchBar from "../components/SearchBar";
 
 export default function Report({ reports }) {
+  const [onSearchTermChange, searchTerm, filtered, setSearchTerm] = useFilter(
+    reports
+  );
   return (
     <Layout title="Reports" data={reports} type="report">
       <Head>
         <title>Report</title>
       </Head>
       <main>
+        <SearchBar
+          onBlur={() => setSearchTerm("")}
+          onSearchTermChange={onSearchTermChange}
+          value={searchTerm}
+        />
         <div className="report-cards">
-          {reports.map((report) => (
+          {filtered.map((report) => (
             <Card
               id={report._id.$oid}
               key={report._id.$oid}
@@ -28,11 +39,10 @@ export default function Report({ reports }) {
             padding-top: 3.9rem;
             display: grid;
             grid-template-columns: 1fr;
-            grid-template-areas: "content";
+            grid-template-areas: "searchbar" "content";
           }
           .report-cards {
             grid-template-columns: repeat(auto-fill, minmax(28rem, auto));
-            grid-template-rows: repeat(auto-fill, minmax(1rem, auto));
             justify-content: center;
             display: grid;
             grid-area: content;

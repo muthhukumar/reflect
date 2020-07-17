@@ -1,8 +1,18 @@
-export default function Fields({ content, type, title }) {
+export default function Fields({ content, title }) {
   return (
     <div className="container">
       <div className="title">{title}</div>
-      <p className="content">{content}</p>
+      {Array.isArray(content) ? (
+        <ul>
+          {content.map((c) => (
+            <p key={c + Math.random()} className="content">
+              {c}
+            </p>
+          ))}
+        </ul>
+      ) : (
+        <p className="content">{content}</p>
+      )}
       <style jsx>
         {`
           .container {
@@ -10,7 +20,20 @@ export default function Fields({ content, type, title }) {
             align-items: flex-start;
             justify-content: space-around;
             flex-direction: column;
+            width: 100%;
             margin: 0.3rem;
+          }
+          .container ul {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0;
+            flex-wrap: wrap;
+            width: 100%;
+          }
+          .container ul p {
+            width: auto;
+            margin: 0 0.4rem;
           }
           .title {
             margin: 0.1rem 0;

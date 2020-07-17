@@ -1,6 +1,13 @@
 import Fields from "./Fields";
 
-export default function Card({ id, title, keyBinding, action, command }) {
+export default function Card({
+  id,
+  title,
+  keyBinding,
+  search,
+  action,
+  command,
+}) {
   return (
     <div className="container" id={id}>
       <div className="title-container">
@@ -11,6 +18,7 @@ export default function Card({ id, title, keyBinding, action, command }) {
         <Fields title="command" content={command} />
         <Fields title="KeyBinding" content={keyBinding} />
         <Fields title="action" content={action} />
+        <Fields title="search" content={search} />
       </div>
       <style jsx>
         {`
