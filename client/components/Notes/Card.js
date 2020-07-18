@@ -1,12 +1,11 @@
 import Field from "../Report/Fields";
 
-export default function ({ id, search, source, title, content }) {
+export default function ({ id, source, title, content }) {
   return (
     <div className="notesCard" id={id}>
       <div className="title">{title}</div>
       <Field type="array" title="source" content={source} />
       <Field type="array" title="content" content={content} />
-      <Field title="search" content={search} />
       <style jsx>{`
         .notesCard {
           margin: 0.4rem;

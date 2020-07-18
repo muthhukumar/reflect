@@ -12,7 +12,7 @@ export default function Home() {
       <style jsx>
         {`
           main {
-            margin-top: 3.9rem;
+            padding-top: 4.7rem;
           }
         `}
       </style>

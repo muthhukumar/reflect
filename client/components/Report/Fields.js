@@ -22,10 +22,13 @@ export default function ({ title, content }) {
       <style jsx>
         {`
           .reportField {
-            padding: 0.6rem;
+            padding: 0.2rem 0.4rem;
             margin: 0.4rem 0;
             background: #ccc;
             border-radius: 5px;
+          }
+          .reportField ul {
+            padding: 0 0 0.2rem 0;
           }
           .title {
             color: var(--font-color);
@@ -33,8 +36,9 @@ export default function ({ title, content }) {
             font-size: 1.3rem;
           }
           .content {
-            font-size: 1.1rem;
-            border-bottom: 1px solid black;
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin: 0.2rem 0;
             padding: 0 0 0.2rem 0;
           }
         `}

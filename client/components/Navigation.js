@@ -1,7 +1,13 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
+import SearchBar from "./SearchBar";
 
-export default function Navigation({ openIndex }) {
+export default function Navigation({
+  onBlur,
+  searchTerm,
+  onSearchTermChange,
+  openIndex,
+}) {
   const router = useRouter();
   return (
     <div className={`navigation`}>
@@ -56,6 +62,11 @@ export default function Navigation({ openIndex }) {
             </a>
           </Link>
         </li>
+        <SearchBar
+          onBlur={onBlur}
+          value={searchTerm}
+          onSearchTermChange={onSearchTermChange}
+        />
       </ul>
       <style jsx>
         {`

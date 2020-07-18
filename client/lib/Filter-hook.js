@@ -13,7 +13,9 @@ export const useFilter = (data) => {
     if (searchTerm !== "") {
       timeOut = setTimeout(() => {
         const newNotes = data.filter((note) =>
-          note.search.some((n) => n.includes(searchTerm))
+          note.search.some((n) =>
+            n.toLowerCase().includes(searchTerm.toLowerCase())
+          )
         );
         setFiltered(newNotes);
       }, 1000);

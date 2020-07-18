@@ -3,11 +3,24 @@ import { useState } from "react";
 import Navigation from "./Navigation";
 import ContentIndex from "../components/ContentIndex";
 
-export default function Layout({ children, title, data, type }) {
+export default function Layout({
+  onBlur,
+  onSearchTermChange,
+  value,
+  children,
+  title,
+  data,
+  type,
+}) {
   const [isContentIndexOpen, setIsContentIndexOpen] = useState(false);
   return (
     <div className="container">
-      <Navigation openIndex={() => setIsContentIndexOpen(true)} />
+      <Navigation
+        openIndex={() => setIsContentIndexOpen(true)}
+        onSearchTermChange={onSearchTermChange}
+        onBlur={onBlur}
+        searchTerm={value}
+      />
       {isContentIndexOpen && (
         <ContentIndex
           closeMenu={() => setIsContentIndexOpen(false)}

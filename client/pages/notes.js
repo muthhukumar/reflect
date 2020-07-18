@@ -3,23 +3,24 @@ import Head from "next/head";
 import Layout from "../components/Layout";
 import Card from "../components/Notes/Card";
 import { useFilter } from "../lib/Filter-hook";
-import SearchBar from "../components/SearchBar";
 
 export default function Notes({ notes }) {
   const [onSearchTermChange, searchTerm, filtered, setSearchTerm] = useFilter(
     notes
   );
   return (
-    <Layout type="notes" data={notes} title="Notes">
+    <Layout
+      type="notes"
+      data={notes}
+      title="Notes"
+      onBlur={() => setSearchTerm("")}
+      onSearchTermChange={onSearchTermChange}
+      value={searchTerm}
+    >
       <Head>
         <title>Notes</title>
       </Head>
       <main>
-        <SearchBar
-          onBlur={() => setSearchTerm("")}
-          onSearchTermChange={onSearchTermChange}
-          value={searchTerm}
-        />
         <div className="note-cards">
           {filtered.map((note) => (
             <Card
@@ -36,7 +37,7 @@ export default function Notes({ notes }) {
       <style jsx>
         {`
           main {
-            padding-top: 3.9rem;
+            padding-top: 5rem;
             display: grid;
             grid-template-columns: 1fr;
             grid-template-areas: "searchbar" "content";

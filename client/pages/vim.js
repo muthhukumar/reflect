@@ -3,23 +3,28 @@ import Head from "next/head";
 import Layout from "../components/Layout";
 import Card from "../components/vimComponents/Card";
 import { useFilter } from "../lib/Filter-hook";
-import SearchBar from "../components/SearchBar";
+import AddButton from "../components/AddButton/index";
+import Popup from "../components/Popup/index";
 
-export default function ({ data }) {
+const Vim =  ({ data }) => {
   const [onSearchTermChange, searchTerm, filtered, setSearchTerm] = useFilter(
     data
   );
   return (
-    <Layout title="Vim Commands" data={data} type="vim">
+    <Layout
+      title="Vim Commands"
+      data={data}
+      type="vim"
+      onBlur={() => setSearchTerm("")}
+      onSearchTermChange={onSearchTermChange}
+      value={searchTerm}
+    >
       <Head>
         <title>Vim commands</title>
       </Head>
       <main>
-        <SearchBar
-          onBlur={() => setSearchTerm("")}
-          onSearchTermChange={onSearchTermChange}
-          value={searchTerm}
-        />
+        <AddButton onAddHandler={() => {}} />
+        <Popup onAddHandler={() => {}} title="Add vim command"></Popup>
         <div className="vim-cards">
           {filtered.map((vimCommand) => (
             <Card
@@ -37,16 +42,16 @@ export default function ({ data }) {
       <style jsx>
         {`
           main {
-            padding-top: 3.9rem;
+            padding-top: 5rem;
             display: grid;
             grid-template-columns: 1fr;
             grid-template-areas:
-              "searchbar"
+              "addnew"
               "content";
           }
           .vim-cards {
             justify-content: center;
-            grid-template-columns: repeat(auto-fit, minmax(25.3rem, auto));
+            grid-template-columns: repeat(auto-fit, minmax(15rem, auto));
             display: grid;
             grid-area: content;
           }
@@ -66,3 +71,5 @@ export async function getServerSideProps() {
   }
   return { props: { data } };
 }
+
+export default Vim;

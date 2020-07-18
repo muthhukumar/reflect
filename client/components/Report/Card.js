@@ -9,9 +9,10 @@ export default function ({ notes, date, done, quote, id }) {
       <Field title="Quote" content={quote} />
       <style jsx>{`
         .reportCard {
-          margin: 0.7rem;
+          margin: 0.3rem;
           max-width: 30rem;
-          padding: 1.4rem;
+          padding: 0.6rem 0.3rem;
+          padding-bottom: 0.2rem;
           border-radius: 5px;
           background: var(--secondary);
           box-shadow: 0 0 5px 1px var(--light);

@@ -3,23 +3,24 @@ import Head from "next/head";
 import Layout from "../components/Layout";
 import Card from "../components/Report/Card";
 import { useFilter } from "../lib/Filter-hook";
-import SearchBar from "../components/SearchBar";
 
 export default function Report({ reports }) {
   const [onSearchTermChange, searchTerm, filtered, setSearchTerm] = useFilter(
     reports
   );
   return (
-    <Layout title="Reports" data={reports} type="report">
+    <Layout
+      title="Reports"
+      data={reports}
+      type="report"
+      onBlur={() => setSearchTerm("")}
+      onSearchTermChange={onSearchTermChange}
+      value={searchTerm}
+    >
       <Head>
         <title>Report</title>
       </Head>
       <main>
-        <SearchBar
-          onBlur={() => setSearchTerm("")}
-          onSearchTermChange={onSearchTermChange}
-          value={searchTerm}
-        />
         <div className="report-cards">
           {filtered.map((report) => (
             <Card
@@ -36,7 +37,7 @@ export default function Report({ reports }) {
       <style jsx>
         {`
           main {
-            padding-top: 3.9rem;
+            padding-top: 5rem;
             display: grid;
             grid-template-columns: 1fr;
             grid-template-areas: "searchbar" "content";
