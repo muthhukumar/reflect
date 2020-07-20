@@ -1,4 +1,4 @@
-import Field from "../Report/Fields";
+import Field from "../report/Fields";
 
 export default function ({ id, source, title, content }) {
   return (

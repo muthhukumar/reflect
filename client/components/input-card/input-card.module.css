@@ -1,0 +1,25 @@
+.wrapper {
+  height: 3rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0.05rem;
+  padding: 0.5rem;
+}
+.wrapper input {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  height: 100%;
+  border-bottom: 1px solid black;
+}
+
+.wrapper h3 {
+  width: 100%;
+  margin: 0.5rem;
+  text-align: center;
+}

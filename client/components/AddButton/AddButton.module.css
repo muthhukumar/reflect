@@ -1,13 +1,17 @@
 .container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
   padding: 0.8rem 0.4rem;
   overflow: hidden;
   margin: 0.1rem;
+  z-index: 20;
   grid-area: addnew;
 }
 .container button {
   border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
+  width: 6rem;
+  height: 6rem;
   border: none;
   text-transform: uppercase;
   background: var(--secondary);

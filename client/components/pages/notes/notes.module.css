@@ -1,0 +1,12 @@
+.main {
+  padding-top: 5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "searchbar" "content";
+}
+.notecards {
+  grid-template-columns: repeat(auto-fill, minmax(25rem, auto));
+  justify-content: center;
+  display: grid;
+  grid-area: content;
+}

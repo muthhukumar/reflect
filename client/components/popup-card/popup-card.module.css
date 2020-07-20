@@ -1,0 +1,85 @@
+.container {
+  border-radius: 4px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.wrapper {
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 30rem;
+  background: white;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  color: black;
+  min-height: 3.5rem;
+  background: white;
+  border-radius: 4px;
+}
+
+.header h3 {
+  font-family: roboto, san-serif;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0.5rem;
+  color: var(--font-color);
+}
+
+.bodyWrapper {
+  width: 100%;
+  height: 100%;
+  padding: 0.2rem 0.5rem;
+}
+
+.clickHandler {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 2.1rem;
+  margin: 0.5rem;
+}
+
+.clickHandler button {
+  border: none;
+  margin: 0 1rem;
+  width: 4rem;
+  height: 100%;
+  border-radius: 6px;
+  font-weight: bold;
+}
+.clickHandler button:nth-child(1) {
+  background: blue;
+  color: #eceaea;
+}
+
+.clickHandler button:nth-child(2) {
+  color: #5b5656;
+  background: white;
+  border: 1px solid #5b5656;
+}
+
+.clickHandler button:hover,
+.clickHandler button:active,
+.clickHandler button:focus {
+  cursor: pointer;
+  outline: none;
+}

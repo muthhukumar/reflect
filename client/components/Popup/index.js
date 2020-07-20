@@ -1,19 +1,23 @@
-import React from "react";
+import { useState } from "react";
 
-import styles from "./Popup.module.css";
+import AddButton from "../AddButton/index";
+import PopupCard from "../popup-card/index";
 
-const Popup = ({ onAddHandler, onCancelHandler, children, title }) => {
+const Popup = ({ title, children, onAddHandler }) => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <h3>{title}</h3>
-      </div>
-      {children}
-      <div className={styles.addHandler}>
-        <button onClick={onAddHandler}>ADD</button>
-        <button onClick={onCancelHandler}>CANCEL</button>
-      </div>
-    </div>
+    <>
+      <AddButton onAddHandler={() => setIsPopupOpen(true)} />
+      {isPopupOpen && (
+        <PopupCard
+          onCancelHandler={() => setIsPopupOpen(false)}
+          onAddHandler={onAddHandler}
+          title={title}
+        >
+          {children}
+        </PopupCard>
+      )}
+    </>
   );
 };
 

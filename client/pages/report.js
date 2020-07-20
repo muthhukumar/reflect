@@ -1,59 +1,16 @@
-import Head from "next/head";
+import getReports from "../lib/getReports";
+import Rc from "../components/pages/report/index";
+import Page from "../components/page/index";
 
-import Layout from "../components/Layout";
-import Card from "../components/Report/Card";
-import { useFilter } from "../lib/Filter-hook";
-
-export default function Report({ reports }) {
-  const [onSearchTermChange, searchTerm, filtered, setSearchTerm] = useFilter(
-    reports
-  );
+export default function Report() {
   return (
-    <Layout
-      title="Reports"
-      data={reports}
-      type="report"
-      onBlur={() => setSearchTerm("")}
-      onSearchTermChange={onSearchTermChange}
-      value={searchTerm}
-    >
-      <Head>
-        <title>Report</title>
-      </Head>
-      <main>
-        <div className="report-cards">
-          {filtered.map((report) => (
-            <Card
-              id={report._id.$oid}
-              key={report._id.$oid}
-              quote={report.quote}
-              date={report.date}
-              notes={report.notes}
-              done={report.done}
-            />
-          ))}
-        </div>
-      </main>
-      <style jsx>
-        {`
-          main {
-            padding-top: 5rem;
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-areas: "searchbar" "content";
-          }
-          .report-cards {
-            grid-template-columns: repeat(auto-fill, minmax(28rem, auto));
-            justify-content: center;
-            display: grid;
-            grid-area: content;
-          }
-        `}
-      </style>
-    </Layout>
+    <Page title="reports" data={getReports()}>
+      <Rc reports={getReports()} />
+    </Page>
   );
 }
 
+/*
 export async function getServerSideProps() {
   let reports;
   try {
@@ -69,3 +26,4 @@ export async function getServerSideProps() {
     },
   };
 }
+*/

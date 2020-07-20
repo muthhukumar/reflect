@@ -1,0 +1,14 @@
+.main {
+  padding-top: 5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "addnew"
+    "content";
+}
+.vimcards {
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, auto));
+  display: grid;
+  grid-area: content;
+}

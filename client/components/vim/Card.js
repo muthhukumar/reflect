@@ -18,6 +18,7 @@ export default function Card({ id, title, keyBinding, action, command }) {
             box-shadow: 0 0 5px 1px var(--light);
             display: flex;
             flex-direction: column;
+            max-width: 15rem;
             align-items: center;
             border-radius: 8px;
             margin: 0.4rem;
