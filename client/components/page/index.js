@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
 
-import styles from "./page.module.css";
+import styles from "./mainpage.module.css";
 import Navbar from "../navbar/index";
 import ContentIndex from "../content-index/index";
 

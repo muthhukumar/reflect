@@ -40,14 +40,14 @@ router.get("/vim", async (ctx) => {
 });
 
 router.post("/vim/add", async (ctx) => {
+  const json = await ctx.request.body();
+  const data: VimSchema = json.value;
+  console.log(data);
   if (!ctx.request.hasBody) {
     ctx.throw(400, "Invalid data passed, check the data and try again");
   }
 
   //TODO check whether the body response is json or some other using if check and parse the response accordingly
-
-  const json = await ctx.request.body();
-  const data: VimSchema = json.value;
 
   //TODO validate inputs before processing. Create a separate function to do all these work
 

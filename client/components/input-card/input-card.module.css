@@ -18,8 +18,10 @@
   border-bottom: 1px solid black;
 }
 
-.wrapper h3 {
+.inputvalue {
   width: 100%;
-  margin: 0.5rem;
-  text-align: center;
+  font-weight: 400;
+  font-size: 1rem;
+  margin: 0.1rem;
+  margin-left: 1.4rem;
 }

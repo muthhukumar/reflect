@@ -53,7 +53,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   min-height: 2.1rem;
   margin: 0.5rem;
 }
@@ -61,7 +61,7 @@
 .clickHandler button {
   border: none;
   margin: 0 1rem;
-  width: 4rem;
+  width: 7rem;
   height: 100%;
   border-radius: 6px;
   font-weight: bold;

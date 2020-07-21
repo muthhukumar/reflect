@@ -1,16 +1,14 @@
 import Page from "../components/page/index";
 import Vc from "../components/pages/vim/index";
-import getVimCommands from "../lib/getVim";
 
-const Vim = () => {
+const Vim = ({ data }) => {
   return (
-    <Page title="Vim" data={getVimCommands()}>
-      <Vc data={getVimCommands()} />
+    <Page title="Vim" data={data}>
+      <Vc data={data} />
     </Page>
   );
 };
 
-/*
 export async function getServerSideProps() {
   let data;
   try {
@@ -22,6 +20,5 @@ export async function getServerSideProps() {
   }
   return { props: { data } };
 }
-*/
 
 export default Vim;
